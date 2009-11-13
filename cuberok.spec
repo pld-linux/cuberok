@@ -1,7 +1,7 @@
 Summary:	Cuberok music player and a collection manager
 Name:		cuberok
 Version:	0.0.11
-Release:	0.2
+Release:	0.3
 License:	GPL v3+
 Group:		X11/Applications/Multimedia
 Source0:	http://cuberok.googlecode.com/files/%{name}-%{version}.tar.gz
@@ -24,6 +24,30 @@ Cuberok is a music player and a collection manager based on Qt4. It
 has lightweight interface, music collection support and many features,
 e.g. music autorating and Last.FM scrobbler.
 
+%package backend-audiere
+Summary:	Audiere backend for Cuberok
+Summary(pl.UTF-8):	Wtyczki Audiere dla Cuberok
+Group:		Libraries
+Requires:	%{name} = %{version}-%{release}
+
+%description backend-audiere
+Audiere backend for Cuberok.
+
+%description backend-audiere -l pl.UTF-8
+Wtyczki Audiere dla Cuberok.
+
+%package backend-ffmpeg
+Summary:	FFmpeg backend for Cuberok
+Summary(pl.UTF-8):	Wtyczki FFmpeg dla Cuberok
+Group:		Libraries
+Requires:	%{name} = %{version}-%{release}
+
+%description backend-ffmpeg
+FFmpeg backend for Cuberok.
+
+%description backend-ffmpeg -l pl.UTF-8
+Wtyczki FFmpeg dla Cuberok.
+
 %package backend-gstreamer
 Summary:	GStreamer backend for Cuberok
 Summary(pl.UTF-8):	Wtyczki GStreamera dla Cuberok
@@ -37,18 +61,6 @@ GStreamer backend for Cuberok.
 %description backend-gstreamer -l pl.UTF-8
 Wtyczki GStreamera dla Cuberok.
 
-%package backend-ffmpeg
-Summary:	FFmpeg backend for Cuberok
-Summary(pl.UTF-8):	Wtyczki FFmpeg dla Cuberok
-Group:		Libraries
-Requires:	%{name} = %{version}-%{release}
-
-%description backend-ffmpeg
-FFmpeg backend for Cuberok.
-
-%description backend-gstreamer -l pl.UTF-8
-Wtyczki FFmpeg dla Cuberok.
-
 %package backend-phonon
 Summary:	Phonon backend for Cuberok
 Summary(pl.UTF-8):	Wtyczki Phonon dla Cuberok
@@ -58,7 +70,7 @@ Requires:	%{name} = %{version}-%{release}
 %description backend-phonon
 Phonon backend for Cuberok.
 
-%description backend-gstreamer -l pl.UTF-8
+%description backend-phonon -l pl.UTF-8
 Wtyczki Phonon dla Cuberok.
 
 %prep
@@ -91,14 +103,19 @@ rm -rf $RPM_BUILD_ROOT
 %{_desktopdir}/%{name}.desktop
 %{_pixmapsdir}/%{name}.xpm
 
-%files backend-gstreamer
+%files backend-audiere
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/%{name}/libplayer_gst.so
+%attr(755,root,root) %{_libdir}/%{name}/libplayer_audiere.so
 
 %files backend-ffmpeg
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/%{name}/libplayer_ffmpeg.so
 
+%files backend-gstreamer
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/%{name}/libplayer_gst.so
+
 %files backend-phonon
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/%{name}/libplayer_phonon.so
+%defattr(644,root,root,755)
