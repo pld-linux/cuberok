@@ -1,7 +1,7 @@
 Summary:	Cuberok music player and a collection manager
 Name:		cuberok
 Version:	0.0.11
-Release:	0.1
+Release:	0.2
 License:	GPL v3+
 Group:		X11/Applications/Multimedia
 Source0:	http://cuberok.googlecode.com/files/%{name}-%{version}.tar.gz
@@ -15,12 +15,51 @@ BuildRequires:	libstdc++-devel
 BuildRequires:	phonon-devel
 BuildRequires:	qt4-build
 BuildRequires:	taglib-devel
+# for Amarok 1.4 import
+Suggests:	QtSql-sqlite3
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 Cuberok is a music player and a collection manager based on Qt4. It
 has lightweight interface, music collection support and many features,
 e.g. music autorating and Last.FM scrobbler.
+
+%package backend-gstreamer
+Summary:	GStreamer backend for Cuberok
+Summary(pl.UTF-8):	Wtyczki GStreamera dla Cuberok
+Group:		Libraries
+Requires:	%{name} = %{version}-%{release}
+Requires:	gstreamer-plugins-good >= 0.10
+
+%description backend-gstreamer
+GStreamer backend for Cuberok.
+
+%description backend-gstreamer -l pl.UTF-8
+Wtyczki GStreamera dla Cuberok.
+
+%package backend-ffmpeg
+Summary:	FFmpeg backend for Cuberok
+Summary(pl.UTF-8):	Wtyczki FFmpeg dla Cuberok
+Group:		Libraries
+Requires:	%{name} = %{version}-%{release}
+
+%description backend-ffmpeg
+FFmpeg backend for Cuberok.
+
+%description backend-gstreamer -l pl.UTF-8
+Wtyczki FFmpeg dla Cuberok.
+
+%package backend-phonon
+Summary:	Phonon backend for Cuberok
+Summary(pl.UTF-8):	Wtyczki Phonon dla Cuberok
+Group:		Libraries
+Requires:	%{name} = %{version}-%{release}
+
+%description backend-phonon
+Phonon backend for Cuberok.
+
+%description backend-gstreamer -l pl.UTF-8
+Wtyczki Phonon dla Cuberok.
 
 %prep
 %setup -q
@@ -46,11 +85,20 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/cuberok
 %dir %{_libdir}/cuberok
 %attr(755,root,root) %{_libdir}/%{name}/libcuberok_style.so
-%attr(755,root,root) %{_libdir}/%{name}/libplayer_ffmpeg.so
-%attr(755,root,root) %{_libdir}/%{name}/libplayer_gst.so
-%attr(755,root,root) %{_libdir}/%{name}/libplayer_phonon.so
 %dir %{_datadir}/%{name}
 %dir %{_datadir}/%{name}/locale
 %lang(ru) %{_datadir}/%{name}/locale/%{name}_ru.qm
 %{_desktopdir}/%{name}.desktop
 %{_pixmapsdir}/%{name}.xpm
+
+%files backend-gstreamer
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/%{name}/libplayer_gst.so
+
+%files backend-ffmpeg
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/%{name}/libplayer_ffmpeg.so
+
+%files backend-phonon
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/%{name}/libplayer_phonon.so
