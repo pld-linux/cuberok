@@ -31,7 +31,10 @@ Group:		Libraries
 Requires:	%{name} = %{version}-%{release}
 
 %description backend-audiere
-Audiere backend for Cuberok.
+The Audiere Audio System is a portable audio library which supports
+playing MP3, Ogg Vorbis, WAV, IT, XM, S3M, and MOD files.
+
+This package contains Audiere backend for Cuberok.
 
 %description backend-audiere -l pl.UTF-8
 Wtyczki Audiere dla Cuberok.
@@ -43,7 +46,10 @@ Group:		Libraries
 Requires:	%{name} = %{version}-%{release}
 
 %description backend-ffmpeg
-FFmpeg backend for Cuberok.
+FFmpeg is a complete solution to record, convert and stream audio and
+video.
+
+This package contains FFmpeg backend for Cuberok.
 
 %description backend-ffmpeg -l pl.UTF-8
 Wtyczki FFmpeg dla Cuberok.
@@ -56,7 +62,12 @@ Requires:	%{name} = %{version}-%{release}
 Requires:	gstreamer-plugins-good >= 0.10
 
 %description backend-gstreamer
-GStreamer backend for Cuberok.
+GStreamer is a streaming-media framework, based on graphs of filters
+which operate on media data. Applications using this library can do
+anything from real-time sound processing to playing videos, and just
+about anything else media-related.
+
+This package contains GStreamer backend for Cuberok.
 
 %description backend-gstreamer -l pl.UTF-8
 Wtyczki GStreamera dla Cuberok.
@@ -68,7 +79,13 @@ Group:		Libraries
 Requires:	%{name} = %{version}-%{release}
 
 %description backend-phonon
-Phonon backend for Cuberok.
+Phonon is the multimedia API for Qt4/KDE4. Phonon was created to allow
+KDE4 to be independent of any single multimedia framework such as
+GStreamer or Xine and to provide a stable API for KDE4's lifetime. It
+was done to fix problems of frameworks becoming unmaintained, API
+instability, and to create a simple multimedia API.
+
+This package contains Phonon backend for Cuberok.
 
 %description backend-phonon -l pl.UTF-8
 Wtyczki Phonon dla Cuberok.
