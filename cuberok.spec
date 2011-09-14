@@ -7,6 +7,7 @@ Group:		X11/Applications/Multimedia
 Source0:	http://cuberok.googlecode.com/files/%{name}-%{version}.tar.gz
 # Source0-md5:	0b09935acbf8e94645680b5a51081820
 Patch0:		ffmpeg-headers.patch
+URL:		https://sites.google.com/site/cuberok/
 BuildRequires:	audiere-devel
 BuildRequires:	ffmpeg-devel
 BuildRequires:	gstreamer-devel
