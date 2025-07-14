@@ -93,7 +93,7 @@ Wtyczki Phonon dla Cuberok.
 
 %prep
 %setup -q
-%patch0 -p1
+%patch -P0 -p1
 
 %build
 qmake-qt4 Cuberok.pro \
